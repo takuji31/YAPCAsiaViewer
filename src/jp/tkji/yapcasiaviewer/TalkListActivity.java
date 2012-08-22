@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
-public class talkListActivity extends FragmentActivity
-        implements talkListFragment.Callbacks {
+public class TalkListActivity extends FragmentActivity
+        implements TalkListFragment.Callbacks {
 
     private boolean mTwoPane;
 
@@ -18,7 +18,7 @@ public class talkListActivity extends FragmentActivity
 
         if (findViewById(R.id.talk_detail_container) != null) {
             mTwoPane = true;
-            ((talkListFragment) getSupportFragmentManager()
+            ((TalkListFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.talk_list))
                     .setActivateOnItemClick(true);
         }
@@ -28,16 +28,16 @@ public class talkListActivity extends FragmentActivity
     public void onItemSelected(String id) {
         if (mTwoPane) {
             Bundle arguments = new Bundle();
-            arguments.putString(talkDetailFragment.ARG_ITEM_ID, id);
-            talkDetailFragment fragment = new talkDetailFragment();
+            arguments.putString(TalkDetailFragment.ARG_ITEM_ID, id);
+            TalkDetailFragment fragment = new TalkDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.talk_detail_container, fragment)
                     .commit();
 
         } else {
-            Intent detailIntent = new Intent(this, talkDetailActivity.class);
-            detailIntent.putExtra(talkDetailFragment.ARG_ITEM_ID, id);
+            Intent detailIntent = new Intent(this, TalkDetailActivity.class);
+            detailIntent.putExtra(TalkDetailFragment.ARG_ITEM_ID, id);
             startActivity(detailIntent);
         }
     }

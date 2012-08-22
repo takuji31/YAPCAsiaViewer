@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class talkListFragment extends ListFragment {
+public class TalkListFragment extends ListFragment {
 
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
 
@@ -28,7 +28,7 @@ public class talkListFragment extends ListFragment {
         }
     };
 
-    public talkListFragment() {
+    public TalkListFragment() {
     }
 
     @Override

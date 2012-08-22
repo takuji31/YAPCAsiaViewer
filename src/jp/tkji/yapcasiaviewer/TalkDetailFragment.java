@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class talkDetailFragment extends Fragment {
+public class TalkDetailFragment extends Fragment {
 
     public static final String ARG_ITEM_ID = "item_id";
 
     DummyContent.DummyItem mItem;
 
-    public talkDetailFragment() {
+    public TalkDetailFragment() {
     }
 
     @Override

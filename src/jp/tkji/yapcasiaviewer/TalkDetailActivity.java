@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
-public class talkDetailActivity extends FragmentActivity {
+public class TalkDetailActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +17,9 @@ public class talkDetailActivity extends FragmentActivity {
 
         if (savedInstanceState == null) {
             Bundle arguments = new Bundle();
-            arguments.putString(talkDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(talkDetailFragment.ARG_ITEM_ID));
-            talkDetailFragment fragment = new talkDetailFragment();
+            arguments.putString(TalkDetailFragment.ARG_ITEM_ID,
+                    getIntent().getStringExtra(TalkDetailFragment.ARG_ITEM_ID));
+            TalkDetailFragment fragment = new TalkDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.talk_detail_container, fragment)
@@ -30,7 +30,7 @@ public class talkDetailActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            NavUtils.navigateUpTo(this, new Intent(this, talkListActivity.class));
+            NavUtils.navigateUpTo(this, new Intent(this, TalkListActivity.class));
             return true;
         }
 
