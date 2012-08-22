@@ -1,0 +1,3 @@
+<resources>
+    <item type="layout" name="activity_talk_list">@layout/activity_talk_twopane</item>
+</resources>
