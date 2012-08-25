@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import jp.tkji.yapcasiaviewer.model.TimeTable;
 
 import android.content.Context;
 import android.net.Uri;

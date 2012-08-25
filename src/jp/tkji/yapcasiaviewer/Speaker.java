@@ -1,4 +1,4 @@
-package jp.tkji.yapcasiaviewer.model;
+package jp.tkji.yapcasiaviewer;
 
 import java.io.Serializable;
 
