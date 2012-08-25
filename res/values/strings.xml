@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">YAPCAsiaViewer</string>
-    <string name="title_talk_detail">talk Detail</string>
+    <string name="title_talk_detail">Talk Detail</string>
     <string name="title_talk_list">Talks</string>
 </resources>
