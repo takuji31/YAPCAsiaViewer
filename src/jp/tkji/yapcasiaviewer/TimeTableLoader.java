@@ -18,7 +18,7 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class TimeTableLoader extends AsyncTaskLoader<ArrayList<TimeTable>> {
+public class TimeTableLoader extends AsyncTaskLoader<ScheduleList> {
 
 	private String mDateString;
 	
@@ -28,7 +28,7 @@ public class TimeTableLoader extends AsyncTaskLoader<ArrayList<TimeTable>> {
 	}
 
 	@Override
-	public ArrayList<TimeTable> loadInBackground() {
+	public ScheduleList loadInBackground() {
 		try {
 			Uri.Builder builder = Uri.parse(getContext().getString(R.string.api_url)).buildUpon();
 			builder.appendQueryParameter("date", mDateString);
@@ -52,7 +52,7 @@ public class TimeTableLoader extends AsyncTaskLoader<ArrayList<TimeTable>> {
 			String jsonString = TextUtils.join("\n", lines);
 			
 			JSONObject json = new JSONObject(jsonString);
-			return TimeTable.parseJson(json.getJSONArray("talks_by_venue"));
+			return ScheduleList.parseJson(json.getJSONArray("talks_by_venue"));
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
