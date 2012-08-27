@@ -52,7 +52,7 @@ public class TimeTableLoader extends AsyncTaskLoader<ScheduleList> {
 			String jsonString = TextUtils.join("\n", lines);
 			
 			JSONObject json = new JSONObject(jsonString);
-			return ScheduleList.parseJson(json.getJSONArray("talks_by_venue"));
+			return ScheduleList.parseJson(json);
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
