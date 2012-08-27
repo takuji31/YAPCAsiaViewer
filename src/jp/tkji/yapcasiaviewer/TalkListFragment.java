@@ -6,11 +6,13 @@ import android.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.Loader;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class TalkListFragment extends ListFragment {
+public class TalkListFragment extends ListFragment implements LoaderCallbacks<ScheduleList> {
 
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
 
@@ -32,15 +34,6 @@ public class TalkListFragment extends ListFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                R.layout.simple_list_item_activated_1,
-                R.id.text1,
-                DummyContent.ITEMS));
-    }
-
-    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (savedInstanceState != null && savedInstanceState
@@ -57,6 +50,13 @@ public class TalkListFragment extends ListFragment {
         }
 
         mCallbacks = (Callbacks) activity;
+    }
+    
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+    	// TODO Auto-generated method stub
+    	super.onActivityCreated(savedInstanceState);
+    	getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -94,4 +94,25 @@ public class TalkListFragment extends ListFragment {
 
         mActivatedPosition = position;
     }
+
+	@Override
+	public Loader<ScheduleList> onCreateLoader(int id, Bundle args) {
+		return new TimeTableLoader(getActivity(), "2012-09-28");
+	}
+
+	@Override
+	public void onLoadFinished(Loader<ScheduleList> loader, ScheduleList data) {
+		if (data != null) {
+	        setListAdapter(new ArrayAdapter<TimeTable>(getActivity(),
+	                R.layout.simple_list_item_activated_1,
+	                R.id.text1,
+	                data));
+		}
+	}
+
+	@Override
+	public void onLoaderReset(Loader<ScheduleList> loader) {
+		// TODO Auto-generated method stub
+		
+	}
 }
