@@ -2,17 +2,15 @@ package jp.tkji.yapcasiaviewer;
 
 import jp.tkji.yapcasiaviewer.dummy.DummyContent;
 
-import android.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class TalkListFragment extends ListFragment implements LoaderCallbacks<ScheduleList> {
+public class TalkListFragment extends ListFragment implements LoaderCallbacks<VenueList> {
 
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
 
@@ -96,22 +94,19 @@ public class TalkListFragment extends ListFragment implements LoaderCallbacks<Sc
     }
 
 	@Override
-	public Loader<ScheduleList> onCreateLoader(int id, Bundle args) {
+	public Loader<VenueList> onCreateLoader(int id, Bundle args) {
 		return new TimeTableLoader(getActivity(), "2012-09-28");
 	}
 
 	@Override
-	public void onLoadFinished(Loader<ScheduleList> loader, ScheduleList data) {
-		if (data != null) {
-	        setListAdapter(new ArrayAdapter<TimeTable>(getActivity(),
-	                R.layout.simple_list_item_activated_1,
-	                R.id.text1,
-	                data));
+	public void onLoadFinished(Loader<VenueList> loader, VenueList data) {
+		if (data == null) {
+
 		}
 	}
 
 	@Override
-	public void onLoaderReset(Loader<ScheduleList> loader) {
+	public void onLoaderReset(Loader<VenueList> loader) {
 		// TODO Auto-generated method stub
 		
 	}

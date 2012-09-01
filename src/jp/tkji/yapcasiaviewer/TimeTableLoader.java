@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import org.json.JSONException;
@@ -18,7 +19,7 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class TimeTableLoader extends AsyncTaskLoader<ScheduleList> {
+public class TimeTableLoader extends AsyncTaskLoader<VenueList> {
 
 	private String mDateString;
 	
@@ -28,7 +29,7 @@ public class TimeTableLoader extends AsyncTaskLoader<ScheduleList> {
 	}
 
 	@Override
-	public ScheduleList loadInBackground() {
+	public VenueList loadInBackground() {
 		try {
 			Uri.Builder builder = Uri.parse(getContext().getString(R.string.api_url)).buildUpon();
 			builder.appendQueryParameter("date", mDateString);
@@ -52,13 +53,15 @@ public class TimeTableLoader extends AsyncTaskLoader<ScheduleList> {
 			String jsonString = TextUtils.join("\n", lines);
 			
 			JSONObject json = new JSONObject(jsonString);
-			return ScheduleList.parseJson(json);
+			return VenueList.parseJson(json);
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return null;
