@@ -34,7 +34,7 @@ public class Talk implements Serializable {
 		category = !json.isNull("category") ? json.getString("category") : null;
 		duration = json.getInt("duration");
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:MM:SS");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		try {
 			startOn = Calendar.getInstance();
