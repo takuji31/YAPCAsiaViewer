@@ -104,10 +104,10 @@ public class TalkListActivity extends YAVActivity
     }
 
     @Override
-    public void onItemSelected(String id) {
+    public void onItemSelected(Talk talk) {
         if (mTwoPane) {
             Bundle arguments = new Bundle();
-            arguments.putString(TalkDetailFragment.ARG_ITEM_ID, id);
+            arguments.putSerializable(TalkDetailFragment.ARG_TALK, talk);
             TalkDetailFragment fragment = new TalkDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
@@ -116,7 +116,7 @@ public class TalkListActivity extends YAVActivity
 
         } else {
             Intent detailIntent = new Intent(this, TalkDetailActivity.class);
-            detailIntent.putExtra(TalkDetailFragment.ARG_ITEM_ID, id);
+            detailIntent.putExtra(TalkDetailFragment.ARG_TALK, talk);
             startActivity(detailIntent);
         }
     }

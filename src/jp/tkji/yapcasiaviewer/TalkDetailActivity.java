@@ -18,8 +18,8 @@ public class TalkDetailActivity extends SherlockFragmentActivity {
 
         if (savedInstanceState == null) {
             Bundle arguments = new Bundle();
-            arguments.putString(TalkDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(TalkDetailFragment.ARG_ITEM_ID));
+            arguments.putSerializable(TalkDetailFragment.ARG_TALK,
+                    getIntent().getSerializableExtra(TalkDetailFragment.ARG_TALK));
             TalkDetailFragment fragment = new TalkDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()

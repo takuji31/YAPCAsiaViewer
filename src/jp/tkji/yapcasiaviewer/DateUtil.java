@@ -7,8 +7,9 @@ import java.util.Calendar;
 public class DateUtil {
 	private static SimpleDateFormat sJsonDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private static SimpleDateFormat sJsonDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private static SimpleDateFormat sDisplayDateTimeFormat = new SimpleDateFormat("yyyy/MM/dd (E) HH:mm");
 	private static SimpleDateFormat sDisplayDateFormat = new SimpleDateFormat("yyyy/MM/dd (E)");
-	private static SimpleDateFormat sDisplayDayFormat = new SimpleDateFormat("MM/dd(E)");
+	private static SimpleDateFormat sDisplayDayFormat = new SimpleDateFormat("MM/dd (E)");
 	private static SimpleDateFormat sDisplayTimeFormat = new SimpleDateFormat("HH:mm");
 
 	public static Calendar parseJsonDateString(String dateString) throws ParseException {
@@ -23,6 +24,10 @@ public class DateUtil {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(format.parse(str));
 		return calendar;
+	}
+	
+	public static String toDateTimeString(Calendar calendar) {
+		return sDisplayDateTimeFormat.format(calendar.getTime());
 	}
 	
 	public static String toDateString(Calendar calendar) {

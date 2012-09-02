@@ -42,12 +42,12 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 	private int loaderId;
 
     public interface Callbacks {
-        public void onItemSelected(String id);
+        public void onItemSelected(Talk talk);
     }
 
     private static Callbacks sDummyCallbacks = new Callbacks() {
         @Override
-        public void onItemSelected(String id) {
+        public void onItemSelected(Talk talk) {
         }
     };
     
@@ -117,6 +117,8 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         super.onListItemClick(listView, view, position, id);
+        Talk talk = mVenue.talkList.get(position);
+        mCallbacks.onItemSelected(talk);
     }
 
     @Override
