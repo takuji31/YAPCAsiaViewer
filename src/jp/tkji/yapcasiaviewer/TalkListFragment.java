@@ -3,8 +3,6 @@ package jp.tkji.yapcasiaviewer;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 
-import jp.tkji.yapcasiaviewer.dummy.DummyContent;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -85,7 +83,6 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         super.onListItemClick(listView, view, position, id);
-        mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
     }
 
     @Override
