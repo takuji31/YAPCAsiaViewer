@@ -20,7 +20,6 @@ public class TalkListAdapter extends ArrayListAdapter<Talk> {
 		public TextView textViewTime;
 		public TextView textViewName;
 		public TextView textViewTitle;
-		public TextView textViewDesc;
 	}
 	
 	@Override
