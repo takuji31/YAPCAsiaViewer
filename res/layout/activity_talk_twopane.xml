@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
+    android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
     tools:context=".TalkListActivity" >
-    <fragment
-        android:id="@+id/talk_list"
-        android:name="jp.tkji.yapcasiaviewer.TalkListFragment"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />

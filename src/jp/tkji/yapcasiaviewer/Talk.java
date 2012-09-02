@@ -7,7 +7,7 @@ import java.util.Calendar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TimeTable implements Serializable {
+public class Talk implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +22,7 @@ public class TimeTable implements Serializable {
 	public int venueId;
 	public Speaker speaker;
 	
-	public TimeTable(JSONObject json) throws JSONException {
+	public Talk(JSONObject json) throws JSONException {
 		id = json.getString("id");
 		title = json.getString("title");
 		titleEn = json.getString("title_en");

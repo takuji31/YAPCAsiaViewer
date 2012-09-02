@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,36 +23,41 @@ import android.util.Log;
 public class TimeTableLoader extends AsyncTaskLoader<VenueList> {
 
 	private String mDateString;
+	private YapcAsiaViewer mApp;
 	
-	public TimeTableLoader(Context context, String dateString) {
-		super(context);
+	public TimeTableLoader(YapcAsiaViewer app, String dateString) {
+		super(app);
+		mApp = app;
 		mDateString = dateString;
 	}
 
 	@Override
 	public VenueList loadInBackground() {
 		try {
-			Uri.Builder builder = Uri.parse(getContext().getString(R.string.api_url)).buildUpon();
-			builder.appendQueryParameter("date", mDateString);
-			URL url = new URL(builder.build().toString());
-			
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			int code = con.getResponseCode();
-			
-			if (code != HttpURLConnection.HTTP_OK) {
-				Log.w("TimeTable", "Load time table failure HTTP code:" + code);
-				return null;
+			String jsonString = mApp.getPref(mDateString, "");
+			if (TextUtils.isEmpty(jsonString)) {
+				Uri.Builder builder = Uri.parse(getContext().getString(R.string.api_url)).buildUpon();
+				builder.appendQueryParameter("date", mDateString);
+				URL url = new URL(builder.build().toString());
+				
+				HttpURLConnection con = (HttpURLConnection) url.openConnection();
+				int code = con.getResponseCode();
+				
+				if (code != HttpURLConnection.HTTP_OK) {
+					Log.w("TimeTable", "Load time table failure HTTP code:" + code);
+					return null;
+				}
+				
+				InputStream is = con.getInputStream();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+				ArrayList<String> lines = new ArrayList<String>();
+				String line;
+				while ((line = reader.readLine() ) != null) {
+					lines.add(line);
+				}
+				jsonString = TextUtils.join("\n", lines);
+				mApp.setPref(mDateString, jsonString);
 			}
-			
-			InputStream is = con.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-			ArrayList<String> lines = new ArrayList<String>();
-			String line;
-			while ((line = reader.readLine() ) != null) {
-				lines.add(line);
-			}
-			String jsonString = TextUtils.join("\n", lines);
-			
 			JSONObject json = new JSONObject(jsonString);
 			return VenueList.parseJson(json);
 			

@@ -1,24 +1,39 @@
 package jp.tkji.yapcasiaviewer;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
+
 import jp.tkji.yapcasiaviewer.dummy.DummyContent;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class TalkListFragment extends ListFragment implements LoaderCallbacks<VenueList> {
+public class TalkListFragment extends YAVListFragment implements LoaderCallbacks<VenueList> {
 
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
 
+	public static final String BUNDLE_DATE = "date";
+
     private Callbacks mCallbacks = sDummyCallbacks;
     private int mActivatedPosition = ListView.INVALID_POSITION;
+    private OnNavigationListener mNavigationListener = new OnNavigationListener() {
+		
+		@Override
+		public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+			return false;
+		}
+	};
+	private ArrayAdapter<Venue> mAdapter;
+	private VenueList mVenuList;
+	private String mDateString;
+	private int loaderId;
 
     public interface Callbacks {
-
         public void onItemSelected(String id);
     }
 
@@ -27,9 +42,6 @@ public class TalkListFragment extends ListFragment implements LoaderCallbacks<Ve
         public void onItemSelected(String id) {
         }
     };
-
-    public TalkListFragment() {
-    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -52,9 +64,16 @@ public class TalkListFragment extends ListFragment implements LoaderCallbacks<Ve
     
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-    	// TODO Auto-generated method stub
     	super.onActivityCreated(savedInstanceState);
-    	getLoaderManager().initLoader(0, null, this);
+    	
+    	Bundle args = getArguments();
+    	int pos = 0;
+    	if (args != null) {
+			pos = args.getInt(BUNDLE_DATE, 0);
+		}
+    	loaderId = pos;
+    	mDateString = getResources().getStringArray(R.array.dates)[pos];
+    	getLoaderManager().initLoader(loaderId, null, this);
     }
 
     @Override
@@ -92,22 +111,34 @@ public class TalkListFragment extends ListFragment implements LoaderCallbacks<Ve
 
         mActivatedPosition = position;
     }
+    
+    private void setListNavigation() {
+    	ActionBar ab = activity().getSupportActionBar();
+    	if (mVenuList != null) {
+			mAdapter = new ArrayAdapter<Venue>(ab.getThemedContext(), android.R.layout.simple_list_item_1, mVenuList);
+		} else {
+			mAdapter = null;
+		}
+    	ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+    	ab.setListNavigationCallbacks(mAdapter, mNavigationListener);
+    }
 
 	@Override
 	public Loader<VenueList> onCreateLoader(int id, Bundle args) {
-		return new TimeTableLoader(getActivity(), "2012-09-28");
+		return new TimeTableLoader(app(), mDateString);
 	}
 
 	@Override
 	public void onLoadFinished(Loader<VenueList> loader, VenueList data) {
 		if (data == null) {
-
+			app().showErrorToast();
+		} else {
+			mVenuList = data;
+			setListNavigation();
 		}
 	}
 
 	@Override
-	public void onLoaderReset(Loader<VenueList> loader) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onLoaderReset(Loader<VenueList> loader) {}
+
 }
