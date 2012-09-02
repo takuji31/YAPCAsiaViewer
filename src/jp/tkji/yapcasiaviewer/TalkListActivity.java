@@ -70,7 +70,7 @@ public class TalkListActivity extends YAVActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	if (item.getItemId() == android.R.id.home) {
-			mMenu.show();
+			mMenu.toggle();
 		}
     	return super.onOptionsItemSelected(item);
     }
