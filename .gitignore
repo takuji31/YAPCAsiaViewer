@@ -1,1 +1,4 @@
 bin/
+gen/com/actionbarsherlock/*.java
+gen/jp/senchan/lib/*.java
+gen/jp/tkji/yapcasiaviewer/*.java
