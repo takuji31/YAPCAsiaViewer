@@ -16,6 +16,7 @@ import android.widget.ListView;
 public class TalkListFragment extends YAVListFragment implements LoaderCallbacks<VenueList> {
 
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
+	private static final String STATE_NAVIGATION_POSITION = "navigation_position";
 
 	public static final String BUNDLE_DATE = "date";
 
@@ -25,8 +26,11 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		
 		@Override
 		public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-			mVenue = mVenuList.get(itemPosition);
-			setTalkList(mVenue.talkList);
+			if (mNavigationPosition != itemPosition) {
+				mVenue = mVenuList.get(itemPosition);
+				setTalkList(mVenue.talkList);
+			}
+			mNavigationPosition = itemPosition;
 			return true;
 		}
 	};
@@ -47,13 +51,14 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     };
     
     Venue mVenue;
+    int mNavigationPosition = -1;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (savedInstanceState != null && savedInstanceState
-                .containsKey(STATE_ACTIVATED_POSITION)) {
+        if (savedInstanceState != null) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
+            mNavigationPosition = savedInstanceState.getInt(STATE_NAVIGATION_POSITION);
         }
     }
 
@@ -91,16 +96,9 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-    	getLoaderManager().initLoader(loaderId, null, this);
-    }
-
-    @Override
-    public void onStop() {
-    	super.onStop();
-        ActionBar ab = activity().getSupportActionBar();
-        app().toast("onStop").show();
-        ab.setListNavigationCallbacks(null, null);
-        ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+    	if (mVenuList == null) {
+        	getLoaderManager().initLoader(loaderId, null, this);
+		}
     }
 
     @Override
@@ -120,6 +118,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
         if (mActivatedPosition != ListView.INVALID_POSITION) {
             outState.putInt(STATE_ACTIVATED_POSITION, mActivatedPosition);
         }
+        outState.putInt(STATE_NAVIGATION_POSITION, mNavigationPosition);
     }
 
     public void setActivateOnItemClick(boolean activateOnItemClick) {
@@ -151,6 +150,9 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 
 	@Override
 	public Loader<VenueList> onCreateLoader(int id, Bundle args) {
+        ActionBar ab = activity().getSupportActionBar();
+        ab.setListNavigationCallbacks(null, null);
+        ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		return new TimeTableLoader(app(), mDateString);
 	}
 
@@ -158,7 +160,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 	public void onLoadFinished(Loader<VenueList> loader, VenueList data) {
 		if (data == null) {
 			app().showErrorToast();
-		} else {
+		} else if(mVenuList == null) {
 			mVenuList = data;
 			setListNavigation();
 		}
