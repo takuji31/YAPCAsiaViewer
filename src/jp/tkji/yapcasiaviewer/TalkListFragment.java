@@ -17,6 +17,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
 	private static final String STATE_NAVIGATION_POSITION = "navigation_position";
+	private static final String STATE_VENUE_LIST = "venue_list";
 
 	public static final String BUNDLE_DATE = "date";
 
@@ -59,6 +60,12 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
         if (savedInstanceState != null) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
             mNavigationPosition = savedInstanceState.getInt(STATE_NAVIGATION_POSITION);
+            mVenuList = (VenueList) savedInstanceState.getSerializable(STATE_VENUE_LIST);
+            if (mVenuList != null) {
+				mVenue = mVenuList.get(mNavigationPosition);
+				setListNavigation();
+				setTalkList(mVenue.talkList);
+			}
         }
     }
 
@@ -119,6 +126,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
             outState.putInt(STATE_ACTIVATED_POSITION, mActivatedPosition);
         }
         outState.putInt(STATE_NAVIGATION_POSITION, mNavigationPosition);
+        outState.putSerializable(STATE_VENUE_LIST, mVenuList);
     }
 
     public void setActivateOnItemClick(boolean activateOnItemClick) {
@@ -146,6 +154,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		}
     	ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
     	ab.setListNavigationCallbacks(mVenuAdapter, mNavigationListener);
+    	ab.setSelectedNavigationItem(mNavigationPosition == -1 ? 0 : mNavigationPosition);
     }
 
 	@Override
