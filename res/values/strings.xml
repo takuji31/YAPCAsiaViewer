@@ -5,8 +5,8 @@
     <string name="api_url">http://yapcasia.org/2012/talk/schedule?format=json</string>
     <string name="message_something_wrong">Something wrong. Please retry.</string>
     <string-array name="dates">
-        <item>2012&#8211;07&#8211;27</item>
-        <item>2012&#8211;07&#8211;28</item>
-        <item>2012&#8211;07&#8211;29</item>
+        <item>2012&#45;07&#45;27</item>
+        <item>2012&#45;07&#45;28</item>
+        <item>2012&#45;07&#45;29</item>
     </string-array>
 </resources>
