@@ -8,6 +8,7 @@ public class DateUtil {
 	private static SimpleDateFormat sJsonDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private static SimpleDateFormat sJsonDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static SimpleDateFormat sDisplayDateFormat = new SimpleDateFormat("yyyy/MM/dd (E)");
+	private static SimpleDateFormat sDisplayDayFormat = new SimpleDateFormat("MM/dd(E)");
 
 	public static Calendar parseJsonDateString(String dateString) throws ParseException {
 		return parseString(sJsonDateFormat, dateString);
@@ -27,8 +28,16 @@ public class DateUtil {
 		return sDisplayDateFormat.format(calendar.getTime());
 	}
 	
+	public static String toDayString(Calendar calendar) {
+		return sDisplayDayFormat.format(calendar.getTime());
+	}
 	public static String convertToDisplayDateString(String jsonDateString) throws ParseException {
 		return toDateString(parseJsonDateString(jsonDateString));
 	}
+
+	public static String convertToDisplayDayString(String jsonDateString) throws ParseException {
+		return toDayString(parseJsonDateString(jsonDateString));
+	}
+
 
 }
