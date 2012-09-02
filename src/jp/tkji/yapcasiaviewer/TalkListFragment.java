@@ -1,5 +1,7 @@
 package jp.tkji.yapcasiaviewer;
 
+import java.text.ParseException;
+
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 
@@ -70,8 +72,12 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 			pos = args.getInt(BUNDLE_DATE, 0);
 		}
     	loaderId = pos;
-    	getActivity().setTitle(String.valueOf(pos));
     	mDateString = getResources().getStringArray(R.array.dates)[pos];
+    	try {
+			getActivity().setTitle(DateUtil.convertToDisplayDayString(mDateString));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
     	getLoaderManager().initLoader(loaderId, null, this);
     }
 
