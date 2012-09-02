@@ -58,4 +58,10 @@ public class Talk implements Serializable {
 			return "";
 		}
 	}
+	
+	public Calendar getEndOn() {
+		Calendar endOn = (Calendar) startOn.clone();
+		endOn.add(Calendar.MINUTE, duration);
+		return endOn;
+	}
 }

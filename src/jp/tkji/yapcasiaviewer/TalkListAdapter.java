@@ -38,6 +38,7 @@ public class TalkListAdapter extends ArrayListAdapter<Talk> {
 		
 		vh.textViewName.setText(item.speaker.name);
 		vh.textViewTitle.setText(item.getTitle());
+		vh.textViewTime.setText(DateUtil.toTimeString(item.startOn) + " - " + DateUtil.toTimeString(item.getEndOn()));
 		
 		return v;
 	}
