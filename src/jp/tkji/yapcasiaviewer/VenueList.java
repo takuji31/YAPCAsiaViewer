@@ -23,9 +23,9 @@ public class VenueList extends ArrayList<Venue> implements Serializable {
 	public static VenueList parseJson(JSONObject json) throws JSONException, ParseException {
 		VenueList result = new VenueList(json.getString("date"));
 		
-		int length = json.length();
 		JSONArray timeTableJson = json.getJSONArray("talks_by_venue");
 		JSONArray venueJson = json.getJSONArray("venues");
+		int length = timeTableJson.length();
 		for (int i = 0; i < length; i++) {
 			Venue venue = new Venue(venueJson.getJSONObject(i), timeTableJson.getJSONArray(i));
 			result.add(venue);
