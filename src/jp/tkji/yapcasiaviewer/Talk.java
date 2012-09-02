@@ -28,10 +28,10 @@ public class Talk implements Serializable {
 	
 	public Talk(JSONObject json) throws JSONException {
 		id = json.getString("id");
-		title = json.getString("title");
-		titleEn = json.getString("title_en");
-		description = json.getString("abstract");
-		category = json.getString("category");
+		title = !json.isNull("title") ? json.getString("title") : null;
+		titleEn = !json.isNull("title_en") ? json.getString("title_en") : null;
+		description = !json.isNull("abstract") ? json.getString("abstract") : null;
+		category = !json.isNull("category") ? json.getString("category") : null;
 		duration = json.getInt("duration");
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:MM:SS");
