@@ -26,5 +26,9 @@ public class DateUtil {
 	public static String toDateString(Calendar calendar) {
 		return sDisplayDateFormat.format(calendar.getTime());
 	}
+	
+	public static String convertToDisplayDateString(String jsonDateString) throws ParseException {
+		return toDateString(parseJsonDateString(jsonDateString));
+	}
 
 }
