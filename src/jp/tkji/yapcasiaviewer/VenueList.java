@@ -27,8 +27,11 @@ public class VenueList extends ArrayList<Venue> implements Serializable {
 		JSONArray venueJson = json.getJSONArray("venues");
 		int length = timeTableJson.length();
 		for (int i = 0; i < length; i++) {
-			Venue venue = new Venue(venueJson.getJSONObject(i), timeTableJson.getJSONArray(i));
-			result.add(venue);
+			JSONArray talkJson = timeTableJson.getJSONArray(i);
+			Venue venue = new Venue(venueJson.getJSONObject(i), talkJson);
+			if (talkJson.length() != 0) {
+				result.add(venue);
+			}
 		}
 		
 		return result;

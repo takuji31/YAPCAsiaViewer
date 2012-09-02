@@ -25,10 +25,13 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		
 		@Override
 		public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-			return false;
+			mVenue = mVenuList.get(itemPosition);
+			setTalkList(mVenue.talkList);
+			return true;
 		}
 	};
-	private ArrayAdapter<Venue> mAdapter;
+	private ArrayAdapter<Venue> mVenuAdapter;
+	private TalkListAdapter mTalkAdapter;
 	private VenueList mVenuList;
 	private String mDateString;
 	private int loaderId;
@@ -42,6 +45,8 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
         public void onItemSelected(String id) {
         }
     };
+    
+    Venue mVenue;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -52,7 +57,15 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
         }
     }
 
-    @Override
+    protected void setTalkList(TalkList talkList) {
+    	if (talkList == null) {
+			talkList = new TalkList();
+		}
+		mTalkAdapter = new TalkListAdapter(activity(), talkList);
+		setListAdapter(mTalkAdapter);
+	}
+
+	@Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         if (!(activity instanceof Callbacks)) {
@@ -128,12 +141,12 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     private void setListNavigation() {
     	ActionBar ab = activity().getSupportActionBar();
     	if (mVenuList != null) {
-			mAdapter = new ArrayAdapter<Venue>(ab.getThemedContext(), android.R.layout.simple_list_item_1, mVenuList);
+			mVenuAdapter = new ArrayAdapter<Venue>(ab.getThemedContext(), android.R.layout.simple_list_item_1, mVenuList);
 		} else {
-			mAdapter = null;
+			mVenuAdapter = null;
 		}
     	ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-    	ab.setListNavigationCallbacks(mAdapter, mNavigationListener);
+    	ab.setListNavigationCallbacks(mVenuAdapter, mNavigationListener);
     }
 
 	@Override
