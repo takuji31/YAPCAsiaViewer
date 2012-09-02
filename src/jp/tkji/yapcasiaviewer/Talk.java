@@ -4,8 +4,12 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.text.TextUtils;
 
 public class Talk implements Serializable {
 
@@ -41,5 +45,17 @@ public class Talk implements Serializable {
 		
 		venueId = json.getInt("venue_id");
 		speaker = new Speaker(json.getJSONObject("speaker"));
+	}
+	
+	public String getTitle() {
+		if (!TextUtils.isEmpty(title) && Locale.JAPAN.equals(Locale.getDefault())) {
+			return title;
+		} else if (!TextUtils.isEmpty(titleEn)) {
+			return titleEn;
+		} else if (!TextUtils.isEmpty(title)) {
+			return title;
+		} else {
+			return "";
+		}
 	}
 }

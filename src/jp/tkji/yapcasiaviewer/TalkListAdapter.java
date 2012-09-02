@@ -37,7 +37,7 @@ public class TalkListAdapter extends ArrayListAdapter<Talk> {
 		}
 		
 		vh.textViewName.setText(item.speaker.name);
-		vh.textViewTitle.setText(item.title);
+		vh.textViewTitle.setText(item.getTitle());
 		
 		return v;
 	}
