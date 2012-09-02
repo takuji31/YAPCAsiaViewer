@@ -1,5 +1,6 @@
 package jp.tkji.yapcasiaviewer;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import com.actionbarsherlock.view.MenuItem;
@@ -11,6 +12,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -24,21 +27,33 @@ public class TalkListActivity extends YAVActivity
 		@Override
 		public void onItemClick(AdapterView<?> list, View v, int id,
 				long which) {
-			Bundle args = new Bundle();
-			args.putInt(TalkListFragment.BUNDLE_DATE, (int)which);
+			int pos = (int) which;
+	        TalkListFragment f = getTalkListFragment();
+	        if (!mDates[pos].equals(f.getDateString())) {
+				Bundle args = new Bundle();
+				args.putInt(TalkListFragment.BUNDLE_DATE, pos);
+				TalkListFragment newFragment = (TalkListFragment) Fragment.instantiate(TalkListActivity.this, TalkListFragment.class.getName(), args);
+				getSupportFragmentManager().beginTransaction()
+					.replace(R.id.container, newFragment)
+					.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+					.addToBackStack(null)
+					.commit();
+			}
+			mMenu.hide();
 		}
 	};
-	private SlideMenu mMenu;
 	private String[] mDates;
+
+	SlideMenu mMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_list);
 
-        FragmentManager fm = getSupportFragmentManager();
-        TalkListFragment f = (TalkListFragment) fm.findFragmentById(R.id.container);
+        TalkListFragment f = getTalkListFragment();
         if (f == null) {
+            FragmentManager fm = getSupportFragmentManager();
 			f = (TalkListFragment) Fragment.instantiate(this, TalkListFragment.class.getName(), new Bundle());
 			fm.beginTransaction().add(R.id.container, f).commit();
 		}
@@ -57,7 +72,11 @@ public class TalkListActivity extends YAVActivity
         for (String date : mDates) {
 			SlideMenuItem item = new SlideMenuItem();
 			item.id = i;
-			item.label = date;
+			try {
+				item.label = DateUtil.convertToDisplayDateString(date);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			item.icon = -1;
 			items.add(item);
 			i++;
@@ -73,6 +92,15 @@ public class TalkListActivity extends YAVActivity
 			mMenu.toggle();
 		}
     	return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	if (keyCode == KeyEvent.KEYCODE_BACK && mMenu.isMenuShown()) {
+			mMenu.hide();
+    		return true;
+		}
+    	return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -91,5 +119,10 @@ public class TalkListActivity extends YAVActivity
             detailIntent.putExtra(TalkDetailFragment.ARG_ITEM_ID, id);
             startActivity(detailIntent);
         }
+    }
+    
+    public TalkListFragment getTalkListFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        return (TalkListFragment) fm.findFragmentById(R.id.container);
     }
 }

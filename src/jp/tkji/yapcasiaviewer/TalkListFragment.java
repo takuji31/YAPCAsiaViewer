@@ -70,8 +70,18 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 			pos = args.getInt(BUNDLE_DATE, 0);
 		}
     	loaderId = pos;
+    	getActivity().setTitle(String.valueOf(pos));
     	mDateString = getResources().getStringArray(R.array.dates)[pos];
     	getLoaderManager().initLoader(loaderId, null, this);
+    }
+
+    @Override
+    public void onStop() {
+    	super.onStop();
+        ActionBar ab = activity().getSupportActionBar();
+        app().toast("onStop").show();
+        ab.setListNavigationCallbacks(null, null);
+        ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
     }
 
     @Override
@@ -79,7 +89,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
         super.onDetach();
         mCallbacks = sDummyCallbacks;
     }
-
+    
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         super.onListItemClick(listView, view, position, id);
@@ -137,5 +147,9 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 
 	@Override
 	public void onLoaderReset(Loader<VenueList> loader) {}
+	
+	public String getDateString() {
+		return mDateString;
+	}
 
 }
