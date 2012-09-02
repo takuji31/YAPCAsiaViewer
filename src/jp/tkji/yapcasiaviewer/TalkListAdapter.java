@@ -1,9 +1,5 @@
 package jp.tkji.yapcasiaviewer;
 
-import java.util.ArrayList;
-
-import com.androidquery.AQuery;
-
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
@@ -25,7 +21,6 @@ public class TalkListAdapter extends ArrayListAdapter<Talk> {
 		public TextView textViewName;
 		public TextView textViewTitle;
 		public TextView textViewDesc;
-		public AQuery imageViewIcon;
 	}
 	
 	@Override
@@ -38,16 +33,11 @@ public class TalkListAdapter extends ArrayListAdapter<Talk> {
 			vh.textViewTime = (TextView) v.findViewById(R.id.textViewTime);
 			vh.textViewName = (TextView) v.findViewById(R.id.textViewName);
 			vh.textViewTitle = (TextView) v.findViewById(R.id.textViewTitle);
-			vh.textViewDesc = (TextView) v.findViewById(R.id.textViewDesc);
-			vh.imageViewIcon = new AQuery(v).find(R.id.imageViewIcon);
 			v.setTag(vh);
 		}
 		
 		vh.textViewName.setText(item.speaker.name);
 		vh.textViewTitle.setText(item.title);
-		vh.textViewDesc.setText(item.description);
-		//TODO イメージ取得
-		//vh.imageViewIcon.progress(R.id.imageViewIcon).image("");
 		
 		return v;
 	}
