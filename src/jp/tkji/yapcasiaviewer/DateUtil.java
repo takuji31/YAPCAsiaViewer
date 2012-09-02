@@ -5,9 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DateUtil {
-	private static SimpleDateFormat sJsonDateFormat = new SimpleDateFormat("yyyy-mm-dd");
-	private static SimpleDateFormat sJsonDateTimeFormat = new SimpleDateFormat("yyyy-mm-dd HH:MM:SS");
-	private static SimpleDateFormat sDisplayDateFormat = new SimpleDateFormat("yyyy/mm/dd (E)");
+	private static SimpleDateFormat sJsonDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private static SimpleDateFormat sJsonDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private static SimpleDateFormat sDisplayDateFormat = new SimpleDateFormat("yyyy/MM/dd (E)");
 
 	public static Calendar parseJsonDateString(String dateString) throws ParseException {
 		return parseString(sJsonDateFormat, dateString);
