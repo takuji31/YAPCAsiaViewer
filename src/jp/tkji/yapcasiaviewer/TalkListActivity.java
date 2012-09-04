@@ -58,11 +58,6 @@ public class TalkListActivity extends YAVActivity
 			fm.beginTransaction().add(R.id.container, f).commit();
 		}
         
-        if (findViewById(R.id.talk_detail_container) != null) {
-            mTwoPane = true;
-            f.setActivateOnItemClick(true);
-        }
-        
         mMenu = new SlideMenu(this);
         SlideMenu.setAnimationDuration(200);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -84,6 +79,15 @@ public class TalkListActivity extends YAVActivity
         mMenu.setAdapter(new SlideMenuAdapter(this, items));
         mMenu.setOnItemClickListener(mMenuLisntener);
         mMenu.checkEnabled();
+    }
+    
+    @Override
+    protected void onStart() {
+    	super.onStart();
+        if (findViewById(R.id.talk_detail_container) != null) {
+            mTwoPane = true;
+            getTalkListFragment().setActivateOnItemClick(true);
+        }
     }
     
     @Override
