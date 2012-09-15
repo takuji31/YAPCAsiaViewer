@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.tkji.yapcasiaviewer"
+    package="com.github.takuji31.yapcasiaviewer"
     android:versionCode="1"
     android:versionName="1.0" >
     <uses-sdk

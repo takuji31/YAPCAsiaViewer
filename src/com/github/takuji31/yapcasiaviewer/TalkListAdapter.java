@@ -1,5 +1,6 @@
-package jp.tkji.yapcasiaviewer;
+package com.github.takuji31.yapcasiaviewer;
 
+import com.github.takuji31.yapcasiaviewer.R;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;

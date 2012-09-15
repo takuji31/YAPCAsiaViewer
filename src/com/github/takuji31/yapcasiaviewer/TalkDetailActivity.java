@@ -1,4 +1,6 @@
-package jp.tkji.yapcasiaviewer;
+package com.github.takuji31.yapcasiaviewer;
+
+import com.github.takuji31.yapcasiaviewer.R;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;

@@ -1,7 +1,9 @@
-package jp.tkji.yapcasiaviewer;
+package com.github.takuji31.yapcasiaviewer;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+
+import com.github.takuji31.yapcasiaviewer.R;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.github.takuji31.slidemenu.SlideMenu;

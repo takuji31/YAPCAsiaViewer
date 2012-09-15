@@ -1,6 +1,8 @@
-package jp.tkji.yapcasiaviewer;
+package com.github.takuji31.yapcasiaviewer;
 
 import java.text.ParseException;
+
+import com.github.takuji31.yapcasiaviewer.R;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.OnNavigationListener;

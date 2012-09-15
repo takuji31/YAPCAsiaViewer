@@ -1,4 +1,4 @@
-package jp.tkji.yapcasiaviewer;
+package com.github.takuji31.yapcasiaviewer;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

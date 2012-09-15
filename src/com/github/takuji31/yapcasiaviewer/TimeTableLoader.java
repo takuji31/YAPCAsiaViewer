@@ -1,4 +1,4 @@
-package jp.tkji.yapcasiaviewer;
+package com.github.takuji31.yapcasiaviewer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
+
+import com.github.takuji31.yapcasiaviewer.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
