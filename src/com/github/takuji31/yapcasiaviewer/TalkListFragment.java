@@ -103,7 +103,11 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		}
     	loaderId = pos;
     	mDateString = getResources().getStringArray(R.array.dates)[pos];
-    	getMyActivity().getSupportActionBar().setDisplayShowTitleEnabled(false);
+    	try {
+    		getActivity().setTitle(DateUtil.convertToDisplayDayString(mDateString));
+    	} catch (ParseException e) {
+    		e.printStackTrace();
+    	}
     	if (mVenuList == null) {
         	getLoaderManager().initLoader(loaderId, null, this);
 		}
