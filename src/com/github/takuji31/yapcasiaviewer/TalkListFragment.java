@@ -2,6 +2,7 @@ package com.github.takuji31.yapcasiaviewer;
 
 import java.text.ParseException;
 
+import com.github.takuji31.appbase.util.IntentUtil;
 import com.github.takuji31.yapcasiaviewer.R;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -11,6 +12,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
@@ -128,8 +130,25 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-    	// TODO Auto-generated method stub
-    	return super.onOptionsItemSelected(item);
+    	int id = item.getItemId();
+    	if (id == R.id.menu_refresh) {
+    		mVenue = null;
+    		mVenuList = null;
+    		mVenuAdapter = null;
+    		mTalkAdapter = null;
+			setListAdapter(null);
+			setListShown(false);
+			mActivatedPosition = ListView.INVALID_POSITION;
+			mNavigationPosition = -1;
+			getMyApp().setPref(mDateString, "");
+			getLoaderManager().restartLoader(loaderId, null, this);
+		} else if (id == R.id.menu_yapc) {
+			Intent browserIntent = IntentUtil.getOpenBrowserIntent(getMyActivity().getString(R.string.yapc_url));
+			startActivity(browserIntent);
+		} else {
+	    	return super.onOptionsItemSelected(item);
+		}
+    	return true;
     }
     
     @Override
