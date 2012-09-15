@@ -1,6 +1,6 @@
 package jp.tkji.yapcasiaviewer;
 
-import jp.senchan.lib.app.BaseApp;
+import com.github.takuji31.appbase.app.BaseApp;
 
 public class YapcAsiaViewer extends BaseApp {
 	

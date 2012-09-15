@@ -4,10 +4,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 import com.actionbarsherlock.view.MenuItem;
+import com.github.takuji31.slidemenu.SlideMenu;
+import com.github.takuji31.slidemenu.SlideMenuAdapter;
+import com.github.takuji31.slidemenu.SlideMenuItem;
 
-import jp.senchan.lib.widget.SlideMenu;
-import jp.senchan.lib.widget.SlideMenuAdapter;
-import jp.senchan.lib.widget.SlideMenuItem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

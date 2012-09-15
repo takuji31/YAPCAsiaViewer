@@ -3,9 +3,10 @@ package jp.tkji.yapcasiaviewer;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import jp.senchan.lib.app.ArrayListAdapter;
 
-public class TalkListAdapter extends ArrayListAdapter<Talk> {
+import com.github.takuji31.appbase.widget.SimpleListAdapter;
+
+public class TalkListAdapter extends SimpleListAdapter<Talk> {
 
 	public TalkListAdapter(Context context, TalkList list) {
 		super(context, list);

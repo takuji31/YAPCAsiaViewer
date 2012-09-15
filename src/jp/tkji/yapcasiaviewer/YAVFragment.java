@@ -1,6 +1,6 @@
 package jp.tkji.yapcasiaviewer;
 
-import jp.senchan.lib.app.BaseFragment;
+import com.github.takuji31.appbase.app.BaseFragment;
 
 public class YAVFragment extends BaseFragment<YapcAsiaViewer, YAVActivity> {
 

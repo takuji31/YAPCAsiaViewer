@@ -1,6 +1,6 @@
 package jp.tkji.yapcasiaviewer;
 
-import jp.senchan.lib.app.BaseActivity;
+import com.github.takuji31.appbase.app.BaseActivity;
 
 public class YAVActivity extends BaseActivity<YapcAsiaViewer> {
 

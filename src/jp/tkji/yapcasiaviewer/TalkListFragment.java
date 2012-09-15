@@ -73,7 +73,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     	if (talkList == null) {
 			talkList = new TalkList();
 		}
-		mTalkAdapter = new TalkListAdapter(activity(), talkList);
+		mTalkAdapter = new TalkListAdapter(getMyActivity(), talkList);
 		setListAdapter(mTalkAdapter);
 	}
 
@@ -148,7 +148,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     }
     
     private void setListNavigation() {
-    	ActionBar ab = activity().getSupportActionBar();
+    	ActionBar ab = getMyActivity().getSupportActionBar();
     	if (mVenuList != null) {
 			mVenuAdapter = new ArrayAdapter<Venue>(ab.getThemedContext(), android.R.layout.simple_list_item_1, mVenuList);
 		} else {
@@ -161,16 +161,16 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 
 	@Override
 	public Loader<VenueList> onCreateLoader(int id, Bundle args) {
-        ActionBar ab = activity().getSupportActionBar();
+        ActionBar ab = getMyActivity().getSupportActionBar();
         ab.setListNavigationCallbacks(null, null);
         ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		return new TimeTableLoader(app(), mDateString);
+		return new TimeTableLoader(getMyApp(), mDateString);
 	}
 
 	@Override
 	public void onLoadFinished(Loader<VenueList> loader, VenueList data) {
 		if (data == null) {
-			app().showErrorToast();
+			getMyApp().showErrorToast();
 		} else if(mVenuList == null) {
 			mVenuList = data;
 			setListNavigation();
