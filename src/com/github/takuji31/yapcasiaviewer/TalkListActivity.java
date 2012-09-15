@@ -117,9 +117,13 @@ public class TalkListActivity extends YAVActivity
             arguments.putSerializable(TalkDetailFragment.ARG_TALK, talk);
             TalkDetailFragment fragment = new TalkDetailFragment();
             fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.talk_detail_container, fragment)
-                    .commit();
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.talk_detail_container, fragment);
+            if (fm.findFragmentById(R.id.talk_detail_container) != null) {
+                ft.addToBackStack(null);
+			}
+            ft.commit();
 
         } else {
             Intent detailIntent = new Intent(this, TalkDetailActivity.class);
