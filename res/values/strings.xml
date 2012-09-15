@@ -9,4 +9,6 @@
         <item>2012-09-28</item>
         <item>2012-09-29</item>
     </string-array>
+        <string name="refresh">更新</string>
+        <string name="yapc">YAPC::ASIA Tokyo 2012</string>
 </resources>

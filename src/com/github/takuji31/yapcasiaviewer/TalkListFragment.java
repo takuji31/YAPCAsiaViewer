@@ -6,6 +6,9 @@ import com.github.takuji31.yapcasiaviewer.R;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -78,6 +81,8 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     public void onActivityCreated(Bundle savedInstanceState) {
     	super.onActivityCreated(savedInstanceState);
     	
+    	setHasOptionsMenu(true);
+    	
         if (savedInstanceState != null) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
             mNavigationPosition = savedInstanceState.getInt(STATE_NAVIGATION_POSITION);
@@ -96,11 +101,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		}
     	loaderId = pos;
     	mDateString = getResources().getStringArray(R.array.dates)[pos];
-    	try {
-			getActivity().setTitle(DateUtil.convertToDisplayDayString(mDateString));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+    	getMyActivity().getSupportActionBar().setDisplayShowTitleEnabled(false);
     	if (mVenuList == null) {
         	getLoaderManager().initLoader(loaderId, null, this);
 		}
@@ -118,6 +119,17 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     public void onDetach() {
         super.onDetach();
         mCallbacks = sDummyCallbacks;
+    }
+    
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    	inflater.inflate(R.menu.main, menu);
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	// TODO Auto-generated method stub
+    	return super.onOptionsItemSelected(item);
     }
     
     @Override
