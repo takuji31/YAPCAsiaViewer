@@ -54,21 +54,6 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     Venue mVenue;
     int mNavigationPosition = -1;
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if (savedInstanceState != null) {
-            setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
-            mNavigationPosition = savedInstanceState.getInt(STATE_NAVIGATION_POSITION);
-            mVenuList = (VenueList) savedInstanceState.getSerializable(STATE_VENUE_LIST);
-            if (mVenuList != null) {
-				mVenue = mVenuList.get(mNavigationPosition);
-				setListNavigation();
-				setTalkList(mVenue.talkList);
-			}
-        }
-    }
-
     protected void setTalkList(TalkList talkList) {
     	if (talkList == null) {
 			talkList = new TalkList();
@@ -91,6 +76,17 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     public void onActivityCreated(Bundle savedInstanceState) {
     	super.onActivityCreated(savedInstanceState);
     	
+        if (savedInstanceState != null) {
+            setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
+            mNavigationPosition = savedInstanceState.getInt(STATE_NAVIGATION_POSITION);
+            mVenuList = (VenueList) savedInstanceState.getSerializable(STATE_VENUE_LIST);
+            if (mVenuList != null) {
+				mVenue = mVenuList.get(mNavigationPosition);
+				setListNavigation();
+				setTalkList(mVenue.talkList);
+			}
+        }
+    	
     	Bundle args = getArguments();
     	int pos = 0;
     	if (args != null) {
@@ -105,6 +101,14 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		}
     	if (mVenuList == null) {
         	getLoaderManager().initLoader(loaderId, null, this);
+		}
+    }
+    
+    @Override
+    public void onStart() {
+    	super.onStart();
+    	if (mVenuList != null) {
+    		setListNavigation();
 		}
     }
 
