@@ -27,6 +27,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 	private static final String STATE_VENUE_LIST = "venue_list";
 
 	public static final String BUNDLE_DATE = "date";
+	private static final String TAG_DIALOG_LICENSE = "LicenseDialogFragment";
 
     private Callbacks mCallbacks = sDummyCallbacks;
     private int mActivatedPosition = ListView.INVALID_POSITION;
@@ -149,6 +150,9 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		} else if (id == R.id.menu_yapc) {
 			Intent browserIntent = IntentUtil.getOpenBrowserIntent(getMyActivity().getString(R.string.yapc_url));
 			startActivity(browserIntent);
+		} else if (id == R.id.menu_license) {
+			LicenseDialogFragment fragment = new LicenseDialogFragment();
+			fragment.show(getFragmentManager(), TAG_DIALOG_LICENSE);
 		} else {
 	    	return super.onOptionsItemSelected(item);
 		}

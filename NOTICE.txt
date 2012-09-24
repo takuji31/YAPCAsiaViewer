@@ -1,0 +1,15 @@
+YAPCAsiaViewer
+Copyright 2012 Nishibayashi Takuji
+
+This product includes software developed by
+Nishibayashi Takuji (https://github.com/takuji31)
+
+This product includes alse software developed by:
+
+- Nishibayashi Takuji (https://github.com/takuji31)
+  - android-app-base (https://github.com/takuji31/android-app-base)
+  - android-slide-menu (https://github.com/takuji31/android-slide-menu)
+  - Apache License Version 2.0
+- google-gson project (http://code.google.com/p/google-gson/)
+  - google-gson
+  - Apache License Version 2.0  

@@ -15,4 +15,5 @@
     <string name="yapc_url">http://yapcasia.org/2012/</string>
     <string name="check">チェックする</string>
     <string name="uncheck">チェックを消す</string>
+    <string name="license">オープンソースライセンス</string>
 </resources>
