@@ -12,6 +12,9 @@ public class Speaker implements Serializable {
 	public String name;
 	public String nickname;
 	
+	public Speaker() {
+	}
+	
 	public Speaker(JSONObject json) throws JSONException {
 		name = json.getString("name");
 		nickname = json.getString("nickname");

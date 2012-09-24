@@ -2,6 +2,7 @@ package com.github.takuji31.yapcasiaviewer;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.github.takuji31.yapcasiaviewer.R;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -46,13 +47,27 @@ public class TalkDetailFragment extends YAVFragment {
     }
     
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-    	// TODO Auto-generated method stub
-    	super.onActivityCreated(savedInstanceState);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    	inflater.inflate(R.menu.detail, menu);
+    	if (Talk.findCheckedTalkById(getMyApp(), mTalk.id) == null) {
+			menu.removeItem(R.id.menu_uncheck);
+		} else {
+			menu.removeItem(R.id.menu_check);
+		}
     }
     
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-    	inflater.inflate(R.menu.detail, menu);
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	YapcAsiaViewer app = getMyApp();
+    	if (item.getItemId() == R.id.menu_check) {
+			Talk.addTalkList(app, mTalk);
+		} else if (item.getItemId() == R.id.menu_uncheck) {
+			Talk.removeTalkList(app, mTalk);
+		} else {
+	    	return super.onOptionsItemSelected(item);
+		}
+    	
+    	getMyActivity().invalidateOptionsMenu();
+    	return true;
     }
 }

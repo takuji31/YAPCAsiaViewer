@@ -12,6 +12,7 @@
     <string name="refresh">Refresh</string>
     <string name="yapc">YAPC::ASIA Tokyo 2012</string>
     <string name="yapc_url">http://yapcasia.org/2012/</string>
+    <string name="check_list">Check list</string>
     <string name="check">Check</string>
     <string name="uncheck">Uncheck</string>
     <string name="license">Opensource License</string>

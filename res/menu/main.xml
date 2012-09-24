@@ -7,6 +7,11 @@
         android:title="@string/refresh">
     </item>
     <item
+        android:id="@+id/menu_check_list"
+        android:icon="@drawable/ic_action_check_list"
+        android:title="@string/check_list">
+    </item>
+    <item
         android:id="@+id/menu_yapc"
         android:icon="@drawable/ic_action_yapc"
         android:showAsAction="ifRoom|withText"

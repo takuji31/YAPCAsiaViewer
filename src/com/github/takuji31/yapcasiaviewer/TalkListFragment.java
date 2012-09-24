@@ -14,6 +14,9 @@ import com.actionbarsherlock.view.MenuItem;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.view.View;
@@ -46,6 +49,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 	private ArrayAdapter<Venue> mVenuAdapter;
 	private TalkListAdapter mTalkAdapter;
 	private VenueList mVenuList;
+	private TalkList mTalkList;
 	private String mDateString;
 	private int loaderId;
 
@@ -66,6 +70,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     	if (talkList == null) {
 			talkList = new TalkList();
 		}
+    	mTalkList = talkList;
 		mTalkAdapter = new TalkListAdapter(getMyActivity(), talkList);
 		setListAdapter(mTalkAdapter);
 	}
@@ -103,14 +108,16 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 			pos = args.getInt(BUNDLE_DATE, 0);
 		}
     	loaderId = pos;
-    	mDateString = getResources().getStringArray(R.array.dates)[pos];
-    	try {
-    		getActivity().setTitle(DateUtil.convertToDisplayDayString(mDateString));
-    	} catch (ParseException e) {
-    		e.printStackTrace();
-    	}
-    	if (mVenuList == null) {
-        	getLoaderManager().initLoader(loaderId, null, this);
+    	if (pos != -1) {
+        	mDateString = getResources().getStringArray(R.array.dates)[pos];
+        	try {
+        		getActivity().setTitle(DateUtil.convertToDisplayDayString(mDateString));
+        	} catch (ParseException e) {
+        		e.printStackTrace();
+        	}
+        	if (mVenuList == null) {
+            	getLoaderManager().initLoader(loaderId, null, this);
+    		}
 		}
     }
     
@@ -120,6 +127,18 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     	if (mVenuList != null) {
     		setListNavigation();
 		}
+    }
+    
+    @Override
+    public void onResume() {
+    	if (loaderId == -1) {
+			TalkList checkList = new TalkList();
+			checkList.addAll(Talk.getCheckList(getMyApp()));
+			setTalkList(checkList);
+			getActivity().setTitle(R.string.check_list);
+			setListNavigation();
+		}
+    	super.onResume();
     }
 
     @Override
@@ -131,6 +150,10 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     	inflater.inflate(R.menu.main, menu);
+    	if (loaderId == -1) {
+			menu.removeItem(R.id.menu_refresh);
+			menu.removeItem(R.id.menu_check_list);
+		}
     }
     
     @Override
@@ -150,6 +173,15 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
 		} else if (id == R.id.menu_yapc) {
 			Intent browserIntent = IntentUtil.getOpenBrowserIntent(getMyActivity().getString(R.string.yapc_url));
 			startActivity(browserIntent);
+		} else if (id == R.id.menu_check_list) {
+			Bundle args = new Bundle();
+			args.putInt(BUNDLE_DATE, -1);
+			TalkListFragment fragment = (TalkListFragment) Fragment.instantiate(getActivity(), TalkListFragment.class.getName(), args);
+			getFragmentManager().beginTransaction()
+				.replace(R.id.container, fragment)
+				.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+				.addToBackStack(null)
+				.commit();
 		} else if (id == R.id.menu_license) {
 			LicenseDialogFragment fragment = new LicenseDialogFragment();
 			fragment.show(getFragmentManager(), TAG_DIALOG_LICENSE);
@@ -162,7 +194,7 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         super.onListItemClick(listView, view, position, id);
-        Talk talk = mVenue.talkList.get(position);
+        Talk talk = mTalkList.get(position);
         mCallbacks.onItemSelected(talk);
     }
 
@@ -196,12 +228,13 @@ public class TalkListFragment extends YAVListFragment implements LoaderCallbacks
     	ActionBar ab = getMyActivity().getSupportActionBar();
     	if (mVenuList != null) {
 			mVenuAdapter = new ArrayAdapter<Venue>(ab.getThemedContext(), android.R.layout.simple_list_item_1, mVenuList);
+	    	ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+	    	ab.setListNavigationCallbacks(mVenuAdapter, mNavigationListener);
+	       	ab.setSelectedNavigationItem(mNavigationPosition == -1 ? 0 : mNavigationPosition);
 		} else {
 			mVenuAdapter = null;
+	    	ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		}
-    	ab.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-    	ab.setListNavigationCallbacks(mVenuAdapter, mNavigationListener);
-    	ab.setSelectedNavigationItem(mNavigationPosition == -1 ? 0 : mNavigationPosition);
     }
 
 	@Override

@@ -90,7 +90,7 @@ public class TalkListActivity extends YAVActivity
             mTwoPane = true;
             getTalkListFragment().setActivateOnItemClick(true);
         }
-    	getSupportActionBar().setDisplayShowTitleEnabled(mTwoPane);
+    	//getSupportActionBar().setDisplayShowTitleEnabled(mTwoPane);
     }
     
     @Override
