@@ -1,14 +1,15 @@
 package com.github.takuji31.yapcasiaviewer;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.github.takuji31.yapcasiaviewer.R;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class TalkDetailFragment extends Fragment {
+public class TalkDetailFragment extends YAVFragment {
 
     public static final String ARG_TALK = "item_id";
     private Talk mTalk;
@@ -23,6 +24,7 @@ public class TalkDetailFragment extends Fragment {
 		if (args != null) {
         	mTalk = (Talk) args.getSerializable(ARG_TALK);
         }
+		setHasOptionsMenu(true);
     }
 
     @Override
@@ -41,5 +43,16 @@ public class TalkDetailFragment extends Fragment {
         textViewDesc.setText(mTalk.description);
         
         return v;
+    }
+    
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+    	// TODO Auto-generated method stub
+    	super.onActivityCreated(savedInstanceState);
+    }
+    
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    	inflater.inflate(R.menu.detail, menu);
     }
 }

@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 
-public class TalkDetailActivity extends SherlockFragmentActivity {
+public class TalkDetailActivity extends YAVActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

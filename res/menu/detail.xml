@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/menu_check" android:title="@string/check" android:icon="@drawable/ic_action_check" android:showAsAction="ifRoom|withText"></item>
+    <item android:id="@+id/menu_uncheck" android:title="@string/uncheck" android:icon="@drawable/ic_action_uncheck" android:showAsAction="ifRoom|withText"></item>
+    
+
+</menu>
