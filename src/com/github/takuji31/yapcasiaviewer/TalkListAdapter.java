@@ -25,7 +25,7 @@ public class TalkListAdapter extends SimpleListAdapter<Talk> {
 	}
 	
 	@Override
-	public View createView(int position, Talk item, View v) {
+	public View createView(int position, Talk item, View v, View parent) {
 		
 		ViewHolder vh = (ViewHolder) v.getTag();
 		
