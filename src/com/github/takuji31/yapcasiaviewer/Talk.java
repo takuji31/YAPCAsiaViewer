@@ -3,6 +3,7 @@ package com.github.takuji31.yapcasiaviewer;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import org.json.JSONException;
@@ -21,7 +22,7 @@ public class Talk implements Serializable {
 	public String description;
 	public String category;
 	public int duration;
-	public Calendar startOn;
+	public Date startOn;
 	public int venueId;
 	public Speaker speaker;
 	
@@ -56,9 +57,10 @@ public class Talk implements Serializable {
 		}
 	}
 	
-	public Calendar getEndOn() {
-		Calendar endOn = (Calendar) startOn.clone();
+	public Date getEndOn() {
+		Calendar endOn = Calendar.getInstance();
+		endOn.setTimeInMillis(startOn.getTime());
 		endOn.add(Calendar.MINUTE, duration);
-		return endOn;
+		return endOn.getTime();
 	}
 }

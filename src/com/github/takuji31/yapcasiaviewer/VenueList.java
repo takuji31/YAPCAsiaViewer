@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,7 +14,7 @@ public class VenueList extends ArrayList<Venue> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Calendar mDate;
+	private Date mDate;
 	
 	public VenueList(String dateString) throws ParseException {
 		mDate = DateUtil.parseJsonDateString(dateString);

@@ -3,6 +3,7 @@ package com.github.takuji31.yapcasiaviewer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class DateUtil {
 	private static SimpleDateFormat sJsonDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -12,34 +13,28 @@ public class DateUtil {
 	private static SimpleDateFormat sDisplayDayFormat = new SimpleDateFormat("MM/dd (E)");
 	private static SimpleDateFormat sDisplayTimeFormat = new SimpleDateFormat("HH:mm");
 
-	public static Calendar parseJsonDateString(String dateString) throws ParseException {
-		return parseString(sJsonDateFormat, dateString);
+	public static Date parseJsonDateString(String dateString) throws ParseException {
+		return sJsonDateFormat.parse(dateString);
 	}
 	
-	public static Calendar parseJsonDateTimeString(String dateTimeString) throws ParseException {
-		return parseString(sJsonDateTimeFormat, dateTimeString);
+	public static Date parseJsonDateTimeString(String dateTimeString) throws ParseException {
+		return sJsonDateTimeFormat.parse(dateTimeString);
 	}
 	
-	public static Calendar parseString(SimpleDateFormat format, String str) throws ParseException {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(format.parse(str));
-		return calendar;
+	public static String toDateTimeString(Date date) {
+		return sDisplayDateTimeFormat.format(date);
 	}
 	
-	public static String toDateTimeString(Calendar calendar) {
-		return sDisplayDateTimeFormat.format(calendar.getTime());
+	public static String toDateString(Date date) {
+		return sDisplayDateFormat.format(date);
 	}
 	
-	public static String toDateString(Calendar calendar) {
-		return sDisplayDateFormat.format(calendar.getTime());
+	public static String toDayString(Date date) {
+		return sDisplayDayFormat.format(date);
 	}
 	
-	public static String toDayString(Calendar calendar) {
-		return sDisplayDayFormat.format(calendar.getTime());
-	}
-	
-	public static String toTimeString(Calendar calendar) {
-		return sDisplayTimeFormat.format(calendar.getTime());
+	public static String toTimeString(Date date) {
+		return sDisplayTimeFormat.format(date);
 	}
 	
 	public static String convertToDisplayDateString(String jsonDateString) throws ParseException {
