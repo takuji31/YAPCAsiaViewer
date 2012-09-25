@@ -1,19 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">YAPC::Asia 2012 viewer</string>
     <string name="title_talk_detail">Talk Detail</string>
     <string name="title_talk_list">Talks</string>
     <string name="api_url">http://yapcasia.org/2012/talk/schedule?format=json</string>
-    <string name="message_something_wrong">Something wrong. Please retry.</string>
+    <string name="message_something_wrong">何かがおかしいです、やり直してください</string>
     <string-array name="dates">
         <item>2012-09-27</item>
         <item>2012-09-28</item>
         <item>2012-09-29</item>
     </string-array>
-    <string name="refresh">Refresh</string>
+    <string name="refresh">更新</string>
     <string name="yapc">YAPC::ASIA Tokyo 2012</string>
     <string name="yapc_url">http://yapcasia.org/2012/</string>
-    <string name="check_list">Check list</string>
-    <string name="check">Check</string>
-    <string name="uncheck">Uncheck</string>
-    <string name="license">Opensource License</string>
+    <string name="check_list">チェックリスト</string>
+    <string name="check">チェックする</string>
+    <string name="uncheck">チェックを消す</string>
+    <string name="license">オープンソースライセンス</string>
 </resources>

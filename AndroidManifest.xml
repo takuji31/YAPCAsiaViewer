@@ -1,18 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.tkji.yapcasiaviewer"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.github.takuji31.yapcasiaviewer"
+    android:versionCode="3"
+    android:versionName="1.2" >
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="8"
         android:targetSdkVersion="15" />
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name="YapcAsiaViewer"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name=".TalkListActivity"
-            android:label="@string/title_talk_list" >
+        android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+        <activity android:name=".TalkListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
