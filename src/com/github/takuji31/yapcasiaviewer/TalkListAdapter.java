@@ -39,7 +39,7 @@ public class TalkListAdapter extends SimpleListAdapter<Talk> {
 		
 		vh.textViewName.setText(item.speaker.name);
 		vh.textViewTitle.setText(item.getTitle());
-		vh.textViewTime.setText(DateUtil.toTimeString(item.startOn) + " - " + DateUtil.toTimeString(item.getEndOn()));
+		vh.textViewTime.setText(DateUtil.toDateTimeString(item.startOn) + " - " + DateUtil.toTimeString(item.getEndOn()));
 		
 		return v;
 	}
