@@ -2,6 +2,7 @@ package com.github.takuji31.yapcasiaviewer;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.github.takuji31.yapcasiaviewer.R;
 
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,24 +55,19 @@ public class TalkListActivity extends YAVActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_list);
 
-        TalkListFragment f = getTalkListFragment();
-        if (f == null) {
-            FragmentManager fm = getSupportFragmentManager();
-			f = (TalkListFragment) Fragment.instantiate(this, TalkListFragment.class.getName(), new Bundle());
-			fm.beginTransaction().add(R.id.container, f).commit();
-		}
-        
-        mMenu = new SlideMenu(this);
-        SlideMenu.setAnimationDuration(200);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ArrayList<SlideMenuItem> items = new ArrayList<SlideMenuItem>();
         mDates = getResources().getStringArray(R.array.dates);
         int i = 0;
+        int dateIndex = 0;
+        String today = DateUtil.toDateString(Calendar.getInstance().getTime());
         for (String date : mDates) {
 			SlideMenuItem item = new SlideMenuItem();
 			item.id = i;
 			try {
 				item.label = DateUtil.convertToDisplayDateString(date);
+				if (TextUtils.equals(today, item.label)) {
+					dateIndex = i;
+				}
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -78,6 +75,18 @@ public class TalkListActivity extends YAVActivity
 			items.add(item);
 			i++;
 		}
+        TalkListFragment f = getTalkListFragment();
+        if (f == null) {
+            FragmentManager fm = getSupportFragmentManager();
+            Bundle args = new Bundle();
+            args.putInt(TalkListFragment.BUNDLE_DATE, dateIndex);
+			f = (TalkListFragment) Fragment.instantiate(this, TalkListFragment.class.getName(), args);
+			fm.beginTransaction().add(R.id.container, f).commit();
+		}
+        
+        mMenu = new SlideMenu(this);
+        SlideMenu.setAnimationDuration(200);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMenu.setAdapter(new SlideMenuAdapter(this, items));
         mMenu.setOnItemClickListener(mMenuLisntener);
         mMenu.checkEnabled();
