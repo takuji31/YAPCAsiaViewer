@@ -5,6 +5,8 @@ import com.github.takuji31.yapcasiaviewer.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -28,6 +30,8 @@ public class TalkDetailActivity extends YAVActivity {
                     .add(R.id.talk_detail_container, fragment)
                     .commit();
         }
+		NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		manager.cancel(0);
     }
 
     @Override

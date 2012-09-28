@@ -17,4 +17,5 @@
     <string name="check">チェックする</string>
     <string name="uncheck">チェックを消す</string>
     <string name="license">オープンソースライセンス</string>
+    <string name="talk_notify_title">トーク開始5分前です</string>
 </resources>
