@@ -24,5 +24,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".TalkListActivity" />
         </activity>
+        <receiver android:name=".AlarmReceiver" >
+        </receiver>
     </application>
 </manifest>

@@ -16,4 +16,5 @@
     <string name="check">Check</string>
     <string name="uncheck">Uncheck</string>
     <string name="license">Opensource License</string>
+    <string name="talk_notify_title">5 minutes before the start of Talk</string>
 </resources>
