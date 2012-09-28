@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -50,7 +51,9 @@ public class Talk implements Serializable {
 			return new ArrayList<Talk>();
 		}
 		Type type = new TypeToken<Collection<Talk>>(){}.getType();
-		return sGson.fromJson(jsonString, type);
+		List<Talk> list = sGson.fromJson(jsonString, type);
+		Collections.sort(list, new TalkCompareator());
+		return list;
 	}
 	
 	public static boolean addTalkList(YapcAsiaViewer app, Talk talk) {
