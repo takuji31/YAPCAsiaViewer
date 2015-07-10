@@ -1,0 +1,378 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From AppBase:
+* .gitignore
+* LICENSE.txt
+* NOTICE.txt
+* README.md
+* TODO.md
+* libs-src/
+* libs-src/support/
+* libs-src/support/android/
+* libs-src/support/android/support/
+* libs-src/support/android/support/v4/
+* libs-src/support/android/support/v4/accessibilityservice/
+* libs-src/support/android/support/v4/accessibilityservice/AccessibilityServiceInfoCompat.java
+* libs-src/support/android/support/v4/accessibilityservice/package.html
+* libs-src/support/android/support/v4/app/
+* libs-src/support/android/support/v4/app/ActivityCompat.java
+* libs-src/support/android/support/v4/app/BackStackRecord.java
+* libs-src/support/android/support/v4/app/DialogFragment.java
+* libs-src/support/android/support/v4/app/Fragment.java
+* libs-src/support/android/support/v4/app/FragmentActivity.java
+* libs-src/support/android/support/v4/app/FragmentManager.java
+* libs-src/support/android/support/v4/app/FragmentPagerAdapter.java
+* libs-src/support/android/support/v4/app/FragmentStatePagerAdapter.java
+* libs-src/support/android/support/v4/app/FragmentTransaction.java
+* libs-src/support/android/support/v4/app/ListFragment.java
+* libs-src/support/android/support/v4/app/LoaderManager.java
+* libs-src/support/android/support/v4/app/NavUtils.java
+* libs-src/support/android/support/v4/app/NoSaveStateFrameLayout.java
+* libs-src/support/android/support/v4/app/NotificationCompat.java
+* libs-src/support/android/support/v4/app/ServiceCompat.java
+* libs-src/support/android/support/v4/app/ShareCompat.java
+* libs-src/support/android/support/v4/app/SuperNotCalledException.java
+* libs-src/support/android/support/v4/app/TaskStackBuilder.java
+* libs-src/support/android/support/v4/app/package.html
+* libs-src/support/android/support/v4/content/
+* libs-src/support/android/support/v4/content/AsyncTaskLoader.java
+* libs-src/support/android/support/v4/content/ContextCompat.java
+* libs-src/support/android/support/v4/content/CursorLoader.java
+* libs-src/support/android/support/v4/content/IntentCompat.java
+* libs-src/support/android/support/v4/content/Loader.java
+* libs-src/support/android/support/v4/content/LocalBroadcastManager.java
+* libs-src/support/android/support/v4/content/ModernAsyncTask.java
+* libs-src/support/android/support/v4/content/package.html
+* libs-src/support/android/support/v4/content/pm/
+* libs-src/support/android/support/v4/content/pm/ActivityInfoCompat.java
+* libs-src/support/android/support/v4/content/pm/package.html
+* libs-src/support/android/support/v4/database/
+* libs-src/support/android/support/v4/database/DatabaseUtilsCompat.java
+* libs-src/support/android/support/v4/database/package.html
+* libs-src/support/android/support/v4/net/
+* libs-src/support/android/support/v4/net/ConnectivityManagerCompat.java
+* libs-src/support/android/support/v4/net/TrafficStatsCompat.java
+* libs-src/support/android/support/v4/os/
+* libs-src/support/android/support/v4/os/ParcelableCompat.java
+* libs-src/support/android/support/v4/os/package.html
+* libs-src/support/android/support/v4/util/
+* libs-src/support/android/support/v4/util/DebugUtils.java
+* libs-src/support/android/support/v4/util/LogWriter.java
+* libs-src/support/android/support/v4/util/LongSparseArray.java
+* libs-src/support/android/support/v4/util/LruCache.java
+* libs-src/support/android/support/v4/util/SparseArrayCompat.java
+* libs-src/support/android/support/v4/util/TimeUtils.java
+* libs-src/support/android/support/v4/util/package.html
+* libs-src/support/android/support/v4/view/
+* libs-src/support/android/support/v4/view/AccessibilityDelegateCompat.java
+* libs-src/support/android/support/v4/view/KeyEventCompat.java
+* libs-src/support/android/support/v4/view/MenuCompat.java
+* libs-src/support/android/support/v4/view/MenuItemCompat.java
+* libs-src/support/android/support/v4/view/MotionEventCompat.java
+* libs-src/support/android/support/v4/view/PagerAdapter.java
+* libs-src/support/android/support/v4/view/PagerTabStrip.java
+* libs-src/support/android/support/v4/view/PagerTitleStrip.java
+* libs-src/support/android/support/v4/view/VelocityTrackerCompat.java
+* libs-src/support/android/support/v4/view/ViewCompat.java
+* libs-src/support/android/support/v4/view/ViewConfigurationCompat.java
+* libs-src/support/android/support/v4/view/ViewGroupCompat.java
+* libs-src/support/android/support/v4/view/ViewPager.java
+* libs-src/support/android/support/v4/view/accessibility/
+* libs-src/support/android/support/v4/view/accessibility/AccessibilityEventCompat.java
+* libs-src/support/android/support/v4/view/accessibility/AccessibilityManagerCompat.java
+* libs-src/support/android/support/v4/view/accessibility/AccessibilityNodeInfoCompat.java
+* libs-src/support/android/support/v4/view/accessibility/AccessibilityNodeProviderCompat.java
+* libs-src/support/android/support/v4/view/accessibility/AccessibilityRecordCompat.java
+* libs-src/support/android/support/v4/view/accessibility/package.html
+* libs-src/support/android/support/v4/view/package.html
+* libs-src/support/android/support/v4/widget/
+* libs-src/support/android/support/v4/widget/CursorAdapter.java
+* libs-src/support/android/support/v4/widget/CursorFilter.java
+* libs-src/support/android/support/v4/widget/EdgeEffectCompat.java
+* libs-src/support/android/support/v4/widget/ResourceCursorAdapter.java
+* libs-src/support/android/support/v4/widget/ScrollerCompat.java
+* libs-src/support/android/support/v4/widget/SearchViewCompat.java
+* libs-src/support/android/support/v4/widget/SimpleCursorAdapter.java
+* libs-src/support/android/support/v4/widget/package.html
+* proguard-project.txt
+From SlideMenu:
+* .gitignore
+* LICENSE.txt
+* README.md
+* proguard-project.txt
+From YAPCAsiaViewer:
+* .gitignore
+* .idea/
+* .idea/.name
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* LICENSE.txt
+* NOTICE.txt
+* YAPCAsiaViewer.apk
+* appBase/
+* appBase/build.gradle
+* appBase/src/
+* appBase/src/main/
+* appBase/src/main/AndroidManifest.xml
+* appBase/src/main/java/
+* appBase/src/main/java/com/
+* appBase/src/main/java/com/github/
+* appBase/src/main/java/com/github/takuji31/
+* appBase/src/main/java/com/github/takuji31/appbase/
+* appBase/src/main/java/com/github/takuji31/appbase/app/
+* appBase/src/main/java/com/github/takuji31/appbase/app/BaseActivity.java
+* appBase/src/main/java/com/github/takuji31/appbase/app/BaseApp.java
+* appBase/src/main/java/com/github/takuji31/appbase/app/BaseDialogFragment.java
+* appBase/src/main/java/com/github/takuji31/appbase/app/BaseFragment.java
+* appBase/src/main/java/com/github/takuji31/appbase/app/BaseListFragment.java
+* appBase/src/main/java/com/github/takuji31/appbase/app/ToastService.java
+* appBase/src/main/java/com/github/takuji31/appbase/content/
+* appBase/src/main/java/com/github/takuji31/appbase/content/SimpleCursorLoader.java
+* appBase/src/main/java/com/github/takuji31/appbase/util/
+* appBase/src/main/java/com/github/takuji31/appbase/util/ArrayMapper.java
+* appBase/src/main/java/com/github/takuji31/appbase/util/IntentUtil.java
+* appBase/src/main/java/com/github/takuji31/appbase/util/PixelUtil.java
+* appBase/src/main/java/com/github/takuji31/appbase/util/ViewGroupUtil.java
+* appBase/src/main/java/com/github/takuji31/appbase/widget/
+* appBase/src/main/java/com/github/takuji31/appbase/widget/PagingArrayListAdapter.java
+* appBase/src/main/java/com/github/takuji31/appbase/widget/PagingListView.java
+* appBase/src/main/java/com/github/takuji31/appbase/widget/SimpleListAdapter.java
+* appBase/src/main/java/com/github/takuji31/appbase/widget/TabFragmentPagerAdapter.java
+* appBase/src/main/res/
+* appBase/src/main/res/.gitignore
+* build.gradle
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* ic_launcher-web.png
+* libs-src/
+* libs-src/gson-2.2.2-javadoc.jar
+* libs-src/gson-2.2.2-sources.jar
+* proguard-project.txt
+* sample.json
+* settings.gradle
+* slideMenu/
+* slideMenu/build.gradle
+* slideMenu/src/
+* slideMenu/src/main/
+* slideMenu/src/main/AndroidManifest.xml
+* slideMenu/src/main/java/
+* slideMenu/src/main/java/com/
+* slideMenu/src/main/java/com/github/
+* slideMenu/src/main/java/com/github/takuji31/
+* slideMenu/src/main/java/com/github/takuji31/slidemenu/
+* slideMenu/src/main/java/com/github/takuji31/slidemenu/SlideMenu.java
+* slideMenu/src/main/java/com/github/takuji31/slidemenu/SlideMenuAdapter.java
+* slideMenu/src/main/java/com/github/takuji31/slidemenu/SlideMenuItem.java
+* slideMenu/src/main/res/
+* slideMenu/src/main/res/layout/
+* slideMenu/src/main/res/layout/menu.xml
+* slideMenu/src/main/res/layout/menu_listitem.xml
+* yAPCAsiaViewer/
+* yAPCAsiaViewer/build.gradle
+* yAPCAsiaViewer/lint.xml
+* yAPCAsiaViewer/src/
+* yAPCAsiaViewer/src/main/
+* yAPCAsiaViewer/src/main/AndroidManifest.xml
+* yAPCAsiaViewer/src/main/assets/
+* yAPCAsiaViewer/src/main/assets/.gitignore
+* yAPCAsiaViewer/src/main/java/
+* yAPCAsiaViewer/src/main/java/com/
+* yAPCAsiaViewer/src/main/java/com/github/
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/AlarmReceiver.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/DateUtil.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/LicenseDialogFragment.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/Speaker.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/Talk.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/TalkCompareator.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/TalkDetailActivity.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/TalkDetailFragment.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/TalkList.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/TalkListActivity.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/TalkListAdapter.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/TalkListFragment.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/TimeTableLoader.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/Venue.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/VenueList.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/YAVActivity.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/YAVDialogFragment.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/YAVFragment.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/YAVListFragment.java
+* yAPCAsiaViewer/src/main/java/com/github/takuji31/yapcasiaviewer/YapcAsiaViewer.java
+* yAPCAsiaViewer/src/main/res/
+* yAPCAsiaViewer/src/main/res/drawable-hdpi-v11/
+* yAPCAsiaViewer/src/main/res/drawable-hdpi-v11/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi-v9/
+* yAPCAsiaViewer/src/main/res/drawable-hdpi-v9/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_action_check.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_action_check_list.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_action_license.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_action_refresh.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_action_uncheck.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_action_yapc.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_default_icon.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_launcher.png
+* yAPCAsiaViewer/src/main/res/drawable-hdpi/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi-v11/
+* yAPCAsiaViewer/src/main/res/drawable-ldpi-v11/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi-v9/
+* yAPCAsiaViewer/src/main/res/drawable-ldpi-v9/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_action_check.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_action_check_list.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_action_license.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_action_refresh.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_action_uncheck.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_action_yapc.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_default_icon.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_launcher.png
+* yAPCAsiaViewer/src/main/res/drawable-ldpi/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi-v11/
+* yAPCAsiaViewer/src/main/res/drawable-mdpi-v11/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi-v9/
+* yAPCAsiaViewer/src/main/res/drawable-mdpi-v9/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_action_check.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_action_check_list.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_action_license.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_action_refresh.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_action_uncheck.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_action_yapc.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_default_icon.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_launcher.png
+* yAPCAsiaViewer/src/main/res/drawable-mdpi/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi-v11/
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi-v11/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi-v9/
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi-v9/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_action_check.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_action_check_list.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_action_license.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_action_refresh.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_action_uncheck.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_action_yapc.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_default_icon.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_launcher.png
+* yAPCAsiaViewer/src/main/res/drawable-xhdpi/ic_stat_talk.png
+* yAPCAsiaViewer/src/main/res/layout/
+* yAPCAsiaViewer/src/main/res/layout/activity_talk_detail.xml
+* yAPCAsiaViewer/src/main/res/layout/activity_talk_list.xml
+* yAPCAsiaViewer/src/main/res/layout/activity_talk_twopane.xml
+* yAPCAsiaViewer/src/main/res/layout/fragment_talk_detail.xml
+* yAPCAsiaViewer/src/main/res/layout/talk_row.xml
+* yAPCAsiaViewer/src/main/res/menu/
+* yAPCAsiaViewer/src/main/res/menu/detail.xml
+* yAPCAsiaViewer/src/main/res/menu/main.xml
+* yAPCAsiaViewer/src/main/res/raw/
+* yAPCAsiaViewer/src/main/res/raw/license.txt
+* yAPCAsiaViewer/src/main/res/values-ja/
+* yAPCAsiaViewer/src/main/res/values-ja/strings.xml
+* yAPCAsiaViewer/src/main/res/values-large/
+* yAPCAsiaViewer/src/main/res/values-large/refs.xml
+* yAPCAsiaViewer/src/main/res/values-sw600dp/
+* yAPCAsiaViewer/src/main/res/values-sw600dp/refs.xml
+* yAPCAsiaViewer/src/main/res/values/
+* yAPCAsiaViewer/src/main/res/values/strings.xml
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+gson-2.2.2.jar => com.google.code.gson:gson:2.2.2
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.2.2.jar => version 2.2.2 in com.google.code.gson:gson:2.2.2
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+library =>
+    com.actionbarsherlock:actionbarsherlock:4.4.0@aar
+    com.android.support:support-v4:18.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In AppBase:
+* AndroidManifest.xml => appBase/src/main/AndroidManifest.xml
+* res/ => appBase/src/main/res/
+* src/ => appBase/src/main/java/
+In SlideMenu:
+* AndroidManifest.xml => slideMenu/src/main/AndroidManifest.xml
+* res/ => slideMenu/src/main/res/
+* src/ => slideMenu/src/main/java/
+In YAPCAsiaViewer:
+* AndroidManifest.xml => yAPCAsiaViewer/src/main/AndroidManifest.xml
+* assets/ => yAPCAsiaViewer/src/main/assets/
+* lint.xml => yAPCAsiaViewer/lint.xml
+* res/ => yAPCAsiaViewer/src/main/res/
+* src/ => yAPCAsiaViewer/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

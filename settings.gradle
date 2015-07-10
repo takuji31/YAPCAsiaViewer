@@ -1,0 +1,3 @@
+include ':appBase'
+include ':slideMenu'
+include ':YAPCAsiaViewer'
